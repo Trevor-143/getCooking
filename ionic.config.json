@@ -1,0 +1,7 @@
+{
+  "name": "getCooking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
