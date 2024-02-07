@@ -11,7 +11,7 @@
                     <span>Continue</span>
                     <Icon icon="solar:map-arrow-right-bold-duotone" color="#ffffff" />
                 </ion-button> -->
-                <ion-button shape="round" >
+                <ion-button shape="round" @click="signInUserWithGoogle" >
                     <span>Authenticate</span>
                     <Icon icon="uim:google" color="#ffffff" />
                 </ion-button>
@@ -21,10 +21,28 @@
 </template>
 
 <script setup>
-
+import { onMounted, ref } from "vue";
 import { IonPage, IonText, IonButton } from "@ionic/vue"
 import InitialSwipe from "../components/InitialSwipe.vue"
 import { Icon } from "@iconify/vue";
+import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
+
+onMounted(() => {
+    GoogleAuth.initialize({
+        clientId: '220039720820-s1r7rc8rh81dt99tv62qdiomoo51k2s7.apps.googleusercontent.com',
+        scopes: ['profile', 'email'],
+        grantOfflineAccess: true,
+    });
+})
+
+const signInUserWithGoogle = async () => {
+    try {
+        const userData = await GoogleAuth.signIn()
+        console.log(userData)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 </script>
 

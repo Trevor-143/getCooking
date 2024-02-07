@@ -4,4 +4,5 @@
     <string name="title_activity_main">Get Cooking</string>
     <string name="package_name">com.get.cooking</string>
     <string name="custom_url_scheme">com.get.cooking</string>
+    <string name="server_client_id" >220039720820-s1r7rc8rh81dt99tv62qdiomoo51k2s7.apps.googleusercontent.com</string>
 </resources>
