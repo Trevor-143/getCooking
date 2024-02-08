@@ -7,11 +7,11 @@
                 <ion-text>
                     <p>We believe that food is more than just sustenance; it’s a journey of taste, culture, and memories</p>
                 </ion-text>
-                <!-- <ion-button shape="round" >
+                <ion-button shape="round" v-if="userId" >
                     <span>Continue</span>
                     <Icon icon="solar:map-arrow-right-bold-duotone" color="#ffffff" />
-                </ion-button> -->
-                <ion-button shape="round" @click="signInUserWithGoogle" >
+                </ion-button>
+                <ion-button shape="round" @click="signInUserWithGoogle" v-else >
                     <span>Authenticate</span>
                     <Icon icon="uim:google" color="#ffffff" />
                 </ion-button>
@@ -22,10 +22,15 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
-import { IonPage, IonText, IonButton } from "@ionic/vue"
+import { IonPage, IonText, IonButton, useIonRouter } from "@ionic/vue"
 import InitialSwipe from "../components/InitialSwipe.vue"
 import { Icon } from "@iconify/vue";
 import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
+import { useCookie } from "vue-cookie-next";
+
+const { setCookie, getCookie } = useCookie()
+const userId = ref('')
+const router = useIonRouter()
 
 onMounted(() => {
     GoogleAuth.initialize({
@@ -33,12 +38,21 @@ onMounted(() => {
         scopes: ['profile', 'email'],
         grantOfflineAccess: true,
     });
+    userId.value = getCookie('userId')
+    if(userId.value) {
+        router.push('/tabs/tab1')
+    }
 })
 
 const signInUserWithGoogle = async () => {
     try {
         const userData = await GoogleAuth.signIn()
         console.log(userData)
+        setCookie('userId', userData.id)
+        setCookie('userName', userData.name)
+        setCookie('userEmail', userData.email)
+        setCookie('userImage', userData.imageUrl)
+        router.push('/tabs/tab1')
     } catch (error) {
         console.log(error)
     }
