@@ -13,7 +13,7 @@
         <ion-tab-button tab="tab2" href="/tabs/tab2" @click="updateSelectedTab('tab2')" >
           <div class="tabContainer" :class=" selectedTab === 'tab2' ? 'activeTab':''" >
             <Icon icon="solar:minimalistic-magnifer-linear" width="35" />
-            <ion-label v-show="selectedTab === 'tab2'">Find</ion-label>
+            <ion-label v-show="selectedTab === 'tab2'">Search</ion-label>
           </div>
         </ion-tab-button>
 

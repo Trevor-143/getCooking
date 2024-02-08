@@ -18,6 +18,9 @@
           <h1>Explore, Discover, and <span>Get.</span>Cooking.</h1>
         </ion-text>
       </div>
+      <HomeCard />
+      <Categories />
+      <HomeMainIng />
     </ion-content>
   </ion-page>
 </template>
@@ -26,6 +29,10 @@
 import { IonPage, IonHeader, IonToolbar, IonThumbnail, IonImg, IonText, IonContent } from '@ionic/vue';
 import { Icon } from '@iconify/vue';
 import { useCookie } from "vue-cookie-next"
+import HomeCard from '@/components/HomeCard.vue';
+import Categories from '@/components/Categories.vue';
+import HomeMainIng from '@/components/HomeMainIng.vue';
+
 
 const { getCookie } = useCookie()
 
@@ -37,6 +44,9 @@ console.log(userImage)
 
 
 <style scoped>
+ion-toolbar {
+  --background: rgba(0, 0, 0, 0);
+}
 .topHeader {
   display: flex;
   align-items: center;
