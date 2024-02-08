@@ -1,23 +1,62 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border" >
       <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
+        <div class="topHeader">
+          <!-- <ion-title>Tab 1</ion-title> -->
+          <ion-thumbnail v-if="userImage">
+            <ion-img :src="userImage" :alt="userName" ></ion-img>
+          </ion-thumbnail>
+          <Icon v-else icon="solar:user-circle-bold-duotone" width="60" />
+        </div>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ExploreContainer name="Tab 1 page" />
+      <div class="introText">
+        <ion-text>
+          <p>Hi {{ userName? userName : 'There' }}!</p>
+          <h1>Explore, Discover, and <span>Get.</span>Cooking.</h1>
+        </ion-text>
+      </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import { IonPage, IonHeader, IonToolbar, IonThumbnail, IonImg, IonText, IonContent } from '@ionic/vue';
+import { Icon } from '@iconify/vue';
+import { useCookie } from "vue-cookie-next"
+
+const { getCookie } = useCookie()
+
+const userImage = getCookie('userImage')
+const userName = getCookie('userName')
+console.log(userImage)
+
 </script>
+
+
+<style scoped>
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+ion-img {
+  border-radius: 50%;
+}
+.introText {
+  margin: 1rem;
+}
+.introText h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  margin-top: -0.5rem;
+}
+.introText h1 span {
+  color: var(--primary);
+}
+
+</style>
