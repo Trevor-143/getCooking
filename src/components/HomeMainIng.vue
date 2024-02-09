@@ -7,7 +7,9 @@
             <ion-nav-link v-for="meal in allMeals.meals" :key="meal.idMeal" >
                 <div class="oneMeal">
                     <ion-thumbnail > <ion-img :src="meal.strMealThumb" :alt="meal.strMeal" ></ion-img> </ion-thumbnail>
-                    <ion-text><p>{{ meal.strMeal }}</p></ion-text>
+                    <div class="cover">
+                        <ion-text><p>{{ meal.strMeal }}</p></ion-text>
+                    </div>
                 </div>
             </ion-nav-link>
         </div>
@@ -56,25 +58,52 @@ ion-header {
 }
 .byIngredient {
     padding: 1rem;
+    /* padding-bottom: rem; */
 }
 h3 {
     font-weight: 700;
     color: var(--primary);
 }
+.mealIngeList {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
 .oneMeal {
     display: flex;
     align-items: center;
-    margin: 1rem 0;
-    padding: 1rem;
+    /* margin: 1rem 0; */
+    /* padding: 1rem; */
     background-color: #eeeeee;
     border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
 }
 ion-thumbnail {
-    --size: 70px;
-    min-width: 70px;
-    margin-right: 1rem;
+    --size: 100%;
+    min-width: 150px;
+    /* margin-right: 1rem; */
 }
-.oneMeal ion-img {
+/* .oneMeal ion-img {
     border-radius: 50%;
+} */
+.cover {
+    position: absolute;
+    /* top: 0; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    color: #ffffff;
+    height: fit-content;
+}
+.oneMeal ion-text p {
+    padding: 0.5rem 1rem;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: -0.1rem;
 }
 </style>

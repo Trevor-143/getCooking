@@ -1,23 +1,43 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border" >
       <ion-toolbar>
-        <ion-title>Tab 3</ion-title>
+        <ion-button slot="start" fill="clear" ><Icon icon="solar:rewind-back-bold-duotone" width="35" /> </ion-button>
+        <ion-title>Categories</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 3</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ExploreContainer name="Tab 3 page" />
+      <CategoriesList />
     </ion-content>
   </ion-page>
 </template>
 
-<script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+<script setup>
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
+import { Icon } from '@iconify/vue';
+import CategoriesList from '@/components/CategoriesList.vue';
+
 </script>
+
+<style scoped>
+
+ion-header {
+  padding: 1rem 1.3rem;
+}
+ion-toolbar {
+  padding: 0.5rem;
+  --padding-top: 0.5rem;
+  /* background-color: red; */
+  border-radius: 3rem;
+  border: 3px solid #eeeeee;
+  /* align-items: center; */
+}
+ion-button {
+  /* --background: none; */
+  width: fit-content;
+}
+svg {
+  color: var(--primary);
+  margin: -1rem;
+}
+</style>

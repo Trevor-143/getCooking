@@ -53,6 +53,10 @@ ion-toolbar {
   justify-content: flex-end;
   padding: 1rem;
 }
+ion-thumbnail {
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
 ion-img {
   border-radius: 50%;
 }
