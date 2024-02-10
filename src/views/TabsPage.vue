@@ -79,5 +79,14 @@ ion-tab-bar {
 .activeTab {
   color: var(--primary);
 }
+@media (prefers-color-scheme: dark) {
+  .tabHolder {
+    background-color: black;
+    border: 3px solid #4b4b4b;
+  }
+  .activeTab {
+    color: var(--primary-lighter);
+  }
+}
 
 </style>

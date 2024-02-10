@@ -11,6 +11,9 @@ http://ionicframework.com/docs/theming/ */
 :root {
   --primary: #7a4406;
   --primary-lighter: #e79639;
+  --bBack: #0f0f0f;
+  --lightText: #eeeeee;
+  --lightText2: #b4b4b4;
 }
 
 html {

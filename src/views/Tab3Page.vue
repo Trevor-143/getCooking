@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header class="ion-no-border" >
       <ion-toolbar>
-        <ion-button slot="start" fill="clear" ><Icon icon="solar:rewind-back-bold-duotone" width="35" /> </ion-button>
+        <ion-back-button slot="start" fill="clear" > </ion-back-button>
         <ion-title>Categories</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton } from '@ionic/vue';
 import { Icon } from '@iconify/vue';
 import CategoriesList from '@/components/CategoriesList.vue';
 
@@ -40,4 +40,17 @@ svg {
   color: var(--primary);
   margin: -1rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: var(--bBack);
+  }
+  ion-toolbar {
+    --background: black;
+    color: var(--lightText2);
+    border: 3px solid #2e2e2e;
+  }
+  
+}
+
 </style>

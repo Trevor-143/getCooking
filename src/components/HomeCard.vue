@@ -2,19 +2,21 @@
     <ion-card>
         <div class="cardContainer">
             <img :src="mealData.strMealThumb" :alt="mealData.strMeal" >
-            <div class="cardCover">
-                <ion-card-header>
-                    <ion-card-subtitle>{{ mealData.strArea }}</ion-card-subtitle>
-                    <ion-card-title>{{ mealData.strMeal }}</ion-card-title>
-                </ion-card-header>
-                <!-- <ion-card-content>{{ mealData.strInstructions }}</ion-card-content> -->
-            </div>
+            <ion-nav-link :router-link="`/SingleMeal/${mealData.idMeal}`" >
+                <div class="cardCover">
+                    <ion-card-header>
+                        <ion-card-subtitle>{{ mealData.strArea }}</ion-card-subtitle>
+                        <ion-card-title>{{ mealData.strMeal }}</ion-card-title>
+                    </ion-card-header>
+                    <!-- <ion-card-content>{{ mealData.strInstructions }}</ion-card-content> -->
+                </div>
+            </ion-nav-link>
         </div>
     </ion-card>
 </template>
 
 <script setup>
-import { IonCard, IonCardHeader, IonCardContent, IonCardSubtitle, IonImg, IonCardTitle } from '@ionic/vue';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonNavLink, IonCardTitle } from '@ionic/vue';
 import { onMounted, ref } from "vue"
 
 const mealData = ref({})

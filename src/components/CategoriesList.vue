@@ -1,6 +1,6 @@
 <template>
     <div class="catPageList" >
-        <ion-nav-link v-for="cat in allCats" :key="cat.idCategory" >
+        <ion-nav-link v-for="cat in allCats" :key="cat.idCategory" :router-link="`/SingleCat/${cat.strCategory}`" >
             <div class="oneCat">
                 <div class="img">                    
                     <ion-img :src="cat.strCategoryThumb" :alt="cat.strCategory" ></ion-img>
@@ -73,6 +73,16 @@ ion-text p {
     -webkit-box-orient: vertical;
     line-clamp: 2;
     -webkit-line-clamp: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+    .oneCat {
+        background-color: black;
+        color: var(--lightText2);
+    }
+    .oneCat h3 {
+        color: #ffffff;
+    }
 }
 
 </style>

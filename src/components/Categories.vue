@@ -3,7 +3,7 @@
         <ion-text><h3>Categories</h3></ion-text>
         <div class="allCats">
             <div v-for="(cat, index) in Categories" :key="index" >
-                <ion-nav-link>
+                <ion-nav-link :router-link="`/SingleCat/${cat.strCategory}`" >
                     <div class="oneCat" >
                         <img :src="cat.icon" :alt="cat.strCategory">
                         <ion-text><p>{{ cat.strCategory }}</p></ion-text>
@@ -65,6 +65,16 @@ h3 {
 }
 .oneCat p {
     font-weight: 500;
+}
+@media (prefers-color-scheme: dark) {
+    .oneCat {
+        background-color: #000000;
+        color: var(--lightText);
+    }
+    .oneCat img {
+        border: 3px solid #3b3b3b;
+        background-color: #eeeeee;
+    }
 }
 
 </style>

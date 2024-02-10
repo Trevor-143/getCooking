@@ -12,6 +12,14 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/views/initial'
   },
   {
+    path: '/SingleMeal/:mealId',
+    component: () => import('@/views/SinglMeal.vue')
+  },
+  {
+    path: '/SingleCat/:catId',
+    component: () => import('@/views/SingleCat.vue')
+  },
+  {
     path: '/tabs/',
     component: TabsPage,
     children: [

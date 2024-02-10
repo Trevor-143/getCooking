@@ -4,7 +4,7 @@
             <h3>Care for some {{ mainIngredient }}?</h3>
         </ion-text>
         <div class="mealIngeList">
-            <ion-nav-link v-for="meal in allMeals.meals" :key="meal.idMeal" >
+            <ion-nav-link v-for="meal in allMeals.meals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
                 <div class="oneMeal">
                     <ion-thumbnail > <ion-img :src="meal.strMealThumb" :alt="meal.strMeal" ></ion-img> </ion-thumbnail>
                     <div class="cover">

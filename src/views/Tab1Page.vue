@@ -54,7 +54,7 @@ ion-toolbar {
   padding: 1rem;
 }
 ion-thumbnail {
-  border: 3px solid var(--primary);
+  border: 3px solid var(--primary-lighter);
   border-radius: 50%;
 }
 ion-img {
@@ -71,6 +71,17 @@ ion-img {
 }
 .introText h1 span {
   color: var(--primary);
+}
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: var(--bBack);
+  }
+  .introText p {
+    color: var(--lightText2);
+  }
+  .introText h1 {
+    color: var(--lightText);
+  }
 }
 
 </style>

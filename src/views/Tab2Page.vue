@@ -12,7 +12,7 @@
       <div class="content" v-if="allMeals" >
         <ion-text v-if="searchQuery" ><h3 class="whenSearched" >You searched for {{ searchQuery }}?</h3></ion-text>
         <div class="searchedList">
-          <ion-nav-link v-for="meal in allMeals" :key="meal.idMeal" >
+          <ion-nav-link v-for="meal in allMeals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
             <div class="oneSearched">
               <ion-img :src="meal.strMealThumb" :alt="meal.strMeal" ></ion-img>
               <div class="cover">
@@ -67,7 +67,8 @@ const getSearchedMeals = async () => {
 
 onMounted(() => {
   getInitialMeals()
-})
+}) 
+
 
 
 </script>
@@ -143,6 +144,25 @@ svg {
 }
 .noMeals img {
   border-radius: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .form {
+    background-color: #000000;
+    border: 3px solid #2c2c2c;
+  }
+  ion-content {
+    --background: var(--bBack);
+  }
+  .oneSearched {
+    background-color: black;
+  }
+  .cover {
+    color: var(--lightText);
+  }
+  .cover p {
+    color: var(--lightText2);
+  }
 }
 
 </style>
