@@ -7,7 +7,7 @@
         </ion-toolbar>
         </ion-header>
       <ion-content fullscreen="true" >
-        <div class="content" v-if="catMeals" >
+        <div class="content" v-if="catMeals.length > 0" >
           <div class="searchedList">
             <ion-nav-link v-for="meal in catMeals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
               <div class="oneSearched">
@@ -23,10 +23,7 @@
             </ion-nav-link>
           </div>
         </div>
-        <div class="noMeals" v-else >
-          <img :src="Plate" alt="broken plate">
-          <p>It seems we dont have any meals related to the {{ catId }} Category </p>
-        </div>
+        <wait v-else />
       </ion-content>
     </ion-page>
 </template>
@@ -38,6 +35,7 @@ import { useRoute } from 'vue-router';
 import { ref, onBeforeMount } from 'vue';
 import { Icon } from '@iconify/vue';
 import Plate from "/plate.webp"
+import Wait from '@/components/Wait.vue';
 
 const { catId } = useRoute().params
 

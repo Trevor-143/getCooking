@@ -1,22 +1,26 @@
 <template>
-    <div class="catPageList" >
-        <ion-nav-link v-for="cat in allCats" :key="cat.idCategory" :router-link="`/SingleCat/${cat.strCategory}`" >
-            <div class="oneCat">
-                <div class="img">                    
-                    <ion-img :src="cat.strCategoryThumb" :alt="cat.strCategory" ></ion-img>
+    <div>
+        <div class="catPageList" v-if="allCats.length > 0" >
+            <ion-nav-link v-for="cat in allCats" :key="cat.idCategory" :router-link="`/SingleCat/${cat.strCategory}`" >
+                <div class="oneCat">
+                    <div class="img">                    
+                        <ion-img :src="cat.strCategoryThumb" :alt="cat.strCategory" ></ion-img>
+                    </div>
+                    <ion-text>
+                        <h3>{{ cat.strCategory }}</h3>
+                        <p>{{ cat.strCategoryDescription }}</p>
+                    </ion-text>
                 </div>
-                <ion-text>
-                    <h3>{{ cat.strCategory }}</h3>
-                    <p>{{ cat.strCategoryDescription }}</p>
-                </ion-text>
-            </div>
-        </ion-nav-link>
+            </ion-nav-link>
+        </div>
+        <wait v-else />
     </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue"
 import { IonText, IonImg, IonNavLink } from "@ionic/vue";
+import Wait from "./Wait.vue";
 
 const allCats = ref([])
 
@@ -24,7 +28,7 @@ const getAllCats = async () => {
     try {
         const res = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         allCats.value = data.categories
     } catch (error) {
         console.log(error.message)

@@ -38,7 +38,7 @@ const { getCookie } = useCookie()
 
 const userImage = getCookie('userImage')
 const userName = getCookie('userName')
-console.log(userImage)
+// console.log(userImage)
 
 </script>
 

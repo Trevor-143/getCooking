@@ -6,7 +6,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen="true" >
-            <div class="content" >
+            <div class="content" v-if="singleMeal.strMealThumb" >
                 <div class="singleTop">
                     <ion-thumbnail>
                         <ion-img :src="singleMeal.strMealThumb" :alt="singleMeal.strMeal" ></ion-img>
@@ -43,6 +43,7 @@
                 </div>
                 <button class="like" @click="addImageToLikes(singleMeal.idMeal)" > <Icon icon="solar:heart-bold" width="45" /> </button>
             </div>
+            <Wait v-else />
         </ion-content>
     </ion-page>
 </template>
@@ -56,6 +57,7 @@ import { ref, onMounted } from "vue"
 import { useCookie } from "vue-cookie-next"
 import { DataStore } from "@/firebase/config"
 import { doc, getDoc, setDoc, arrayRemove, arrayUnion, onSnapshot } from 'firebase/firestore';
+import Wait from "@/components/Wait.vue"
 
 const { mealId } = useRoute().params
 const singleMeal = ref({})
@@ -69,11 +71,11 @@ const userId = getCookie('userId')
 // console.log(userId)
 
 onMounted( async () => {
-    console.log(mealId)
+    // console.log(mealId)
     try {
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
         const data = await res.json()
-        console.log(data.meals[0])
+        // console.log(data.meals[0])
         singleMeal.value = data.meals[0]
         
         //for the tags
@@ -94,8 +96,8 @@ onMounted( async () => {
                 ingreMeasure.value.push(singleMeal.value[key])
             }
         }
-        console.log(ingreArray.value)
-        console.log(ingreMeasure.value)
+        // console.log(ingreArray.value)
+        // console.log(ingreMeasure.value)
 
     } catch (error) {
         console.log(error.message)

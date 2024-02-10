@@ -2,58 +2,58 @@
 export const Categories = [
     {
         "strCategory": "Beef",
-        "icon": "/cats/beef.png"
+        "icon": "fluent-emoji-flat:cut-of-meat"
     },
     {
         "strCategory": "Breakfast",
-        "icon": "/cats/breakfast.png"
+        "icon": "noto:pancakes"
     },
     {
         "strCategory": "Chicken",
-        "icon": "/cats/chicken.png"
+        "icon": "emojione:chicken"
     },
     {
         "strCategory": "Dessert",
-        "icon": "/cats/desert.png"
+        "icon": "fluent-emoji:shortcake"
     },
     {
         "strCategory": "Goat",
-        "icon": "/cats/goat.png"
+        "icon": "twemoji:cut-of-meat"
     },
     {
         "strCategory": "Lamb",
-        "icon": "/cats/lamb.png"
+        "icon": "noto:cut-of-meat"
     },
     {
         "strCategory": "Miscellaneous",
-        "icon": "/cats/misc.png"
+        "icon": "noto-v1:pizza"
     },
     {
         "strCategory": "Pasta",
-        "icon": "/cats/paster.png"
+        "icon": "noto:spaghetti"
     },
     {
         "strCategory": "Pork",
-        "icon": "/cats/pork.png"
+        "icon": "fluent-emoji:cut-of-meat"
     },
     {
         "strCategory": "Seafood",
-        "icon": "/cats/seafood.png"
+        "icon": "noto:shrimp"
     },
     {
         "strCategory": "Side",
-        "icon": "/cats/side.png"
+        "icon": "twemoji:pot-of-food"
     },
     {
         "strCategory": "Starter",
-        "icon": "/cats/starter.png"
+        "icon": "emojione-v1:pot-of-food"
     },
     {
         "strCategory": "Vegan",
-        "icon": "/cats/vegan.png"
+        "icon": "noto:green-salad"
     },
     {
         "strCategory": "Vegetarian",
-        "icon": "/cats/vegetarian.png"
+        "icon": "emojione:green-salad"
     }
 ]

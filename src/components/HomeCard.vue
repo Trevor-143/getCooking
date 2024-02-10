@@ -28,7 +28,7 @@ const getRandomMeal = async () => {
             throw new Error('Failed to fetch meal');
         }
         const data = await response.json();
-        console.log(data.meals[0]);
+        // console.log(data.meals[0]);
         mealData.value = data.meals[0]
     } catch (error) {
         console.error('Error fetching meal:', error.message);

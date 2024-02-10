@@ -5,8 +5,8 @@
             <div v-for="(cat, index) in Categories" :key="index" >
                 <ion-nav-link :router-link="`/SingleCat/${cat.strCategory}`" >
                     <div class="oneCat" >
-                        <img :src="cat.icon" :alt="cat.strCategory">
-                        <ion-text><p>{{ cat.strCategory }}</p></ion-text>
+                        <Icon :icon="cat.icon" width="45" />
+                        <ion-text><p>{{ cat.strCategory.length > 5 ? cat.strCategory.substring(0, 5) + "..." : cat.strCategory }} </p></ion-text>
                     </div>
                 </ion-nav-link>
             </div>
@@ -17,8 +17,11 @@
 <script setup>
 import { IonText, IonThumbnail, IonImg, IonNavLink } from '@ionic/vue';
 import { Categories } from "../data/categories"
+import { Icon } from "@iconify/vue"
 
-console.log(Categories)
+// let limitedText = text.length > 5 ? text.substring(0, 5) + "..." : text;
+
+// console.log(Categories)
 
 </script>
 
@@ -47,7 +50,7 @@ h3 {
     background-color: #eeeeee;
     margin-right: 1rem;
     width: fit-content;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;

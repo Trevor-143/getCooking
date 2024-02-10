@@ -9,7 +9,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen="true" >
-      <div class="content" v-if="allMeals" >
+      <div class="content" v-if="allMeals.length > 0" >
         <ion-text v-if="searchQuery" ><h3 class="whenSearched" >You searched for {{ searchQuery }}?</h3></ion-text>
         <div class="searchedList">
           <ion-nav-link v-for="meal in allMeals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
@@ -48,7 +48,7 @@ const getInitialMeals = async () => {
     const res = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=chicken')
     const data = await res.json()
     allMeals.value = data.meals
-    console.log(allMeals.value)
+    // console.log(allMeals.value)
   } catch (error) {
     console.log(error.message)
   }
@@ -59,7 +59,7 @@ const getSearchedMeals = async () => {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery.value}`)
     const data = await res.json()
     allMeals.value = data.meals
-    console.log(allMeals.value)
+    // console.log(allMeals.value)
   } catch (error) {
     console.log(error.message)
   }

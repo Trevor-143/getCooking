@@ -12,7 +12,7 @@
             </ion-text>
             <ion-button shape="round" @click="signOutUser" >Sign out</ion-button>
         </div>
-            <div class="content">
+            <div class="content" v-if="likedRecipes.length > 0" >
                 <ion-text><h3 class="hfav" >Favorite Recipes</h3></ion-text>
                 <div class="recipeList">
                     <ion-nav-link v-for="meal in likedRecipes" :key="meal.id" :router-link="`/SingleMeal/${meal.id}`" >
@@ -27,6 +27,10 @@
                     </ion-nav-link>
                 </div>
             </div>
+            <div class="noMeals" v-else >
+                <img :src="Plate" alt="broken plate">
+                <p>Seems you have not yet added any meals to your favorite list.s</p>
+            </div>
         </ion-content>
     </ion-page>
 </template>
@@ -35,9 +39,11 @@
 import { IonPage, IonImg, IonText, IonButton, IonThumbnail, IonContent, IonNavLink, useIonRouter } from '@ionic/vue';
 import { useCookie } from 'vue-cookie-next';
 import { onMounted, ref } from "vue"
-import { DataStore } from "../firebase/config"
+import { DataStore, Authenticate } from "../firebase/config"
+import { signOut } from 'firebase/auth';
 import { doc, onSnapshot, getDoc,  } from "firebase/firestore"
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import Plate from "/plate.webp"
 
 const { getCookie, setCookie } = useCookie()
 
@@ -88,7 +94,7 @@ const processSnapshot = async (docSnap) => {
                 }
             }
             likedRecipes.value = temporaryArray;
-            console.log(likedRecipes.value)
+            // console.log(likedRecipes.value)
         } else {
             console.log('userFavMeals is not an array or is undefined');
         }
@@ -96,19 +102,6 @@ const processSnapshot = async (docSnap) => {
         console.log('No such document!');
     }
 };
-
-const signOutUser = async () => {
-    try {
-        await GoogleAuth.signOut()
-        setCookie('userId', '')
-        setCookie('userName', '')
-        setCookie('userEmail', '')
-        setCookie('userImage', '')
-        router.push('/views/initial')
-    } catch (error) {
-        console.log(error.message)
-    }
-}
 
 onMounted(() => {
     GoogleAuth.initialize({
@@ -118,6 +111,21 @@ onMounted(() => {
     });
     getMobileLikes()
 })
+
+const signOutUser = async () => {
+    try {
+        await GoogleAuth.signOut()
+        signOut(Authenticate).then(() => {
+            setCookie('userId', '')
+            setCookie('userName', '')
+            setCookie('userEmail', '')
+            setCookie('userImage', '')
+            router.push('/views/initial')
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
 </script>
 
@@ -177,6 +185,18 @@ ion-button {
 }
 .info h3 {
     color: var(--primary);
+}
+.noMeals {
+  margin: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+.noMeals img {
+  border-radius: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {

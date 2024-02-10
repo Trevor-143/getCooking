@@ -3,8 +3,8 @@
         <ion-text>
             <h3>Care for some {{ mainIngredient }}?</h3>
         </ion-text>
-        <div class="mealIngeList">
-            <ion-nav-link v-for="meal in allMeals.meals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
+        <div class="mealIngeList" v-if="allMeals.length > 0" >
+            <ion-nav-link v-for="meal in allMeals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
                 <div class="oneMeal">
                     <ion-thumbnail > <ion-img :src="meal.strMealThumb" :alt="meal.strMeal" ></ion-img> </ion-thumbnail>
                     <div class="cover">
@@ -13,6 +13,7 @@
                 </div>
             </ion-nav-link>
         </div>
+        <wait v-else />
     </div>
 </template>
 
@@ -20,6 +21,7 @@
 import { IonText, IonThumbnail, IonImg, IonNavLink } from '@ionic/vue';
 import { onMounted, onBeforeMount, ref } from "vue"
 import { Ingredients } from "../data/mainIngre"
+import Wait from './Wait.vue';
 
 const mainIngredient = ref('')
 const allMeals = ref([])
@@ -34,8 +36,8 @@ const getMainIngredientMeals = async () => {
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${mainIngredient.value}`)
         const data = await res.json()
         // console.log(data)
-        allMeals.value = data
-        console.log(allMeals.value)
+        allMeals.value = data.meals
+        // console.log(allMeals.value)
     } catch (error) {
         console.log(error.message)
     }
