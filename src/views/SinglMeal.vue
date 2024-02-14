@@ -43,7 +43,7 @@
                     <p>{{ note }}</p>
                 </div>
                 <button class="like" @click="addImageToLikes(singleMeal.idMeal)" > <Icon icon="solar:heart-bold" width="45" /> </button>
-                <a href="#" class="rVid" >Recipe video</a>
+                <a :href="singleMeal.strYoutube" class="rVid" >Recipe video</a>
             </div>
             <Wait v-else />
         </ion-content>
@@ -77,7 +77,7 @@ onMounted( async () => {
     try {
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
         const data = await res.json()
-        // console.log(data.meals[0])
+        console.log(data.meals[0])
         singleMeal.value = data.meals[0]
         
         //for the tags
