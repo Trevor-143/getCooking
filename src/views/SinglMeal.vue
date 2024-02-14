@@ -20,28 +20,30 @@
                 <div class="tags">
                     <h3 v-for="i in tagsArray" :key="i" >{{ i }}</h3>
                 </div>
-                <div class="inst">
-                    <h3>Instructions</h3>
-                    <ion-text><p>{{ singleMeal.strInstructions }}</p></ion-text>
-                </div>
                 <div class="ingredients">
                     <h3>Ingredients</h3>
                     <div class="ingrContent">
                         <div class="oneIngre">
                             <div class="singleIng" >
                                 <h4 v-for="(ingredient, index) in ingreArray" :key="index">
-                                    <span>{{ ingredient }}</span>
-                                    <p>{{ ingreMeasure[index] }}</p>
+                                    <ion-icon :icon="radioButtonOn" ></ion-icon>
+                                    <span> {{ ingreMeasure[index] }} of {{ ingredient }}</span>
+                                    <!-- <p>{{ ingreMeasure[index] }}</p> -->
                                 </h4>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="inst">
+                    <h3>Instructions</h3>
+                    <ion-text><p>{{ singleMeal.strInstructions }}</p></ion-text>
                 </div>
                 
                 <div class="notify" v-if="userLikeNote" >
                     <p>{{ note }}</p>
                 </div>
                 <button class="like" @click="addImageToLikes(singleMeal.idMeal)" > <Icon icon="solar:heart-bold" width="45" /> </button>
+                <a href="#" class="rVid" >Recipe video</a>
             </div>
             <Wait v-else />
         </ion-content>
@@ -50,7 +52,7 @@
 
 <script setup>
 import { IonPage, IonHeader, IonToolbar, IonContent, IonBackButton, IonThumbnail, IonImg, IonText, IonIcon } from "@ionic/vue"
-import { arrowUndo } from "ionicons/icons"
+import { arrowUndo, radioButtonOn } from "ionicons/icons"
 import { Icon } from "@iconify/vue"
 import { useRoute } from "vue-router"
 import { ref, onMounted } from "vue"
@@ -240,6 +242,18 @@ ion-img {
     /* font-size: 3rem; */
     color: #d40000;
 }
+.rVid {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 1rem;
+    border: none;
+    background-color: var(--primary);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 2rem;
+}
 .ingredients {
     margin: 1rem;
 }
@@ -250,10 +264,16 @@ ion-img {
 .singleIng h4 {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: #f8f8f8;
-    padding: 0 1.5rem;
+    padding: 0;
     border-radius: 1rem;
+    padding: 1rem;
+}
+.singleIng ion-icon {
+    color: var(--primary-lighter);
+    margin-right: 1rem;
+    min-width: 2rem;
 }
 .singleIng h4 p {
     background-color: var(--primary-lighter);
