@@ -45,7 +45,7 @@ onMounted(() => {
 <style scoped>
 
 .catPageList {
-    margin: 1rem;
+    margin: 1.5rem;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
@@ -55,6 +55,9 @@ onMounted(() => {
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 .img {
     border-radius: 1rem;
@@ -71,12 +74,23 @@ ion-img {
     /* margin: -1rem; */
     /* display: block; */
 }
+ion-text h3 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+}
 ion-text p {
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
     line-clamp: 2;
     -webkit-line-clamp: 2;
+    font-size: 0.8rem;
 }
 
 @media (prefers-color-scheme: dark) {

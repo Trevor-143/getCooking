@@ -45,11 +45,12 @@ onMounted(() => {
 <style scoped>
 
 ion-card {
-    border-radius: 1.5rem;
-    margin: 1rem;
+    border-radius: 1rem;
+    margin: 1.5rem;
+    margin-right: 0rem;
 }
 img {
-    height: 250px;
+    height: 200px;
     width: 100%;
     object-fit: cover;
     display: block;
@@ -73,7 +74,11 @@ img {
     padding-top: 2rem;
 }
 ion-card-subtitle {
-    color: #eeeeee;
+    color: #ffffff;
+    background-color: var(--primary-lighter);
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    border-radius: 2rem;
 }
 ion-card-title {
     color: #ffffff;

@@ -17,7 +17,7 @@
                 <div class="recipeList">
                     <ion-nav-link v-for="meal in likedRecipes" :key="meal.id" :router-link="`/SingleMeal/${meal.id}`" >
                         <div class="oneRecipe">
-                            <ion-img :src="meal.image" :alt="meal.name" ></ion-img>
+                            <img :src="meal.image" :alt="meal.name">
                             <div class="info">
                                 <h3>{{ meal.name }}</h3>
                                 <p> {{ meal.cat }} </p>
@@ -133,7 +133,7 @@ const signOutUser = async () => {
 
 .user {
     padding: 1rem;
-    margin: 1rem;
+    margin: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,7 +162,7 @@ ion-button {
     --background: var(--primary);
 }
 .content {
-    margin: 1rem;
+    margin: 1.5rem;
 }
 .hfav {
     color: var(--primary);
@@ -179,12 +179,32 @@ ion-button {
     border-radius: 1rem;
     overflow: hidden;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+.oneRecipe img {
+    max-width: 90px;
+    border-radius: 50%;
 }
 .info {
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
+    text-align: center;
 }
 .info h3 {
     color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: -1rem;
+}
+.info h3, .info p {
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
 }
 .noMeals {
   margin: 1;

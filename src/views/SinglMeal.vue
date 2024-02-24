@@ -224,7 +224,7 @@ ion-img {
     margin-top: 0;
 }
 .inst {
-    margin: 1rem;
+    margin: 1.5rem;
 }
 .inst h3 {
     color: var(--primary);
@@ -255,7 +255,7 @@ ion-img {
     border-radius: 2rem;
 }
 .ingredients {
-    margin: 1rem;
+    margin: 1.5rem;
 }
 .ingredients h3 {
     color: var(--primary);

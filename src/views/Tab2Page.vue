@@ -14,7 +14,7 @@
         <div class="searchedList">
           <ion-nav-link v-for="meal in allMeals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
             <div class="oneSearched">
-              <ion-img :src="meal.strMealThumb" :alt="meal.strMeal" ></ion-img>
+              <img :src="meal.strMealThumb" :alt="meal.strMeal">
               <div class="cover">
                 <ion-text>
                   <h3>{{ meal.strMeal }}</h3>
@@ -95,7 +95,7 @@ svg {
   color: var(--primary);
 }
 .content {
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 .form {
   display: flex;
@@ -124,14 +124,35 @@ svg {
   height: 100%;
   border-radius: 1rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
 }
-.cover {
+.oneSearched img {
+  max-width: 90px;
+  border-radius: 50%;
+}
+/* .cover {
   padding: 0.5rem;
+} */
+
+.cover h3, .cover h5 {
+  display: -webkit-box;
+  overflow: hidden;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .cover h3 {
   color: var(--primary);
   font-weight: 700;
   margin-bottom: -1rem;
+  font-size: 1rem;
+}
+.cover h5 {
+  font-size: 0.8rem;
 }
 .noMeals {
   margin: 1;

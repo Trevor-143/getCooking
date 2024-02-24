@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 import { IonPage, IonText, IonButton, useIonRouter } from "@ionic/vue"
 import InitialSwipe from "../components/InitialSwipe.vue"
 import { Icon } from "@iconify/vue";
@@ -35,6 +35,12 @@ const router = useIonRouter()
 const continueUser = () => {
     router.push('/tabs/tab1')
 }
+
+// onBeforeMount(() => {
+//     if(userId.value) {
+//         router.push('/tabs/tab1')
+//     }
+// })
 
 onMounted(() => {
     GoogleAuth.initialize({

@@ -11,7 +11,7 @@
           <div class="searchedList">
             <ion-nav-link v-for="meal in catMeals" :key="meal.idMeal" :router-link="`/SingleMeal/${meal.idMeal}`" >
               <div class="oneSearched">
-                <ion-img :src="meal.strMealThumb" :alt="meal.strMeal" ></ion-img>
+                <img :src="meal.strMealThumb" :alt="meal.strMeal">
                 <div class="cover">
                   <ion-text>
                     <h3>{{ meal.strMeal }}</h3>
@@ -80,7 +80,7 @@ ion-button {
   color: var(--primary);
 }
 .content {
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   padding-bottom: 2rem;
 }
 .searchedList {
@@ -93,19 +93,29 @@ ion-button {
   height: 100%;
   border-radius: 1rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
 }
 .cover {
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
+  text-align: center;
+}
+.oneSearched img {
+  max-width: 80px;
+  border-radius: 50%;
 }
 .cover h3 {
   color: var(--primary);
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: -1rem;
   display: -webkit-box;
   overflow: hidden;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  font-size: 1rem;
 }
 .noMeals {
   margin: 1;

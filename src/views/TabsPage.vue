@@ -62,6 +62,7 @@ const updateSelectedTab = (tab) => {
 }
 ion-tab-bar {
   --background: rgba(0, 0, 0, 0);
+  border: none;
   padding: 1rem 0.8rem;
   /* padding-bottom: -2rem; */
 }

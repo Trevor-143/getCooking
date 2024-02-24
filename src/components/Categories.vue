@@ -5,8 +5,8 @@
             <div v-for="(cat, index) in Categories" :key="index" >
                 <ion-nav-link :router-link="`/SingleCat/${cat.strCategory}`" >
                     <div class="oneCat" >
-                        <Icon :icon="cat.icon" width="45" />
-                        <ion-text><p>{{ cat.strCategory.length > 5 ? cat.strCategory.substring(0, 5) + "..." : cat.strCategory }} </p></ion-text>
+                        <Icon :icon="cat.icon" width="80" />
+                        <ion-text><p>{{ cat.strCategory.length > 5 ? cat.strCategory.substring(0, 10) + "..." : cat.strCategory }} </p></ion-text>
                     </div>
                 </ion-nav-link>
             </div>
@@ -28,7 +28,7 @@ import { Icon } from "@iconify/vue"
 <style scoped>
 
 .categoryList {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 h3 {
@@ -56,16 +56,23 @@ h3 {
     align-items: center;
     justify-content: space-between;
     border-radius: 1rem;
+    /* box-shadow: 0px 10px 26px -12px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 10px 26px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 26px -12px rgba(0,0,0,0.75); */
 }
 .oneCat img {
-    min-width: 50px;
-    max-width: 50px;
+    min-width: 80px;
+    max-width: 80px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
     opacity: 0.8;
     border: 3px solid #ffffff;
 }
+/* .oneCat svg {
+    min-width: 80px;
+    max-width: 80px;
+} */
 .oneCat p {
     font-weight: 500;
 }

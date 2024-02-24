@@ -14,11 +14,13 @@
     <ion-content :fullscreen="true">
       <div class="introText">
         <ion-text>
-          <p>Hi {{ userName? userName : 'There' }}!</p>
-          <h1>Explore, Discover, and <span>Get.</span>Cooking.</h1>
+          <!-- <p>Hi {{ userName? userName : 'There' }}!</p> -->
+          <h1>Explore, Discover, <span>Get.</span>Cooking.</h1>
         </ion-text>
       </div>
-      <HomeCard />
+      <div class="topCard">
+        <HomeCard /><HomeCard />
+      </div>
       <Categories />
       <HomeMainIng />
     </ion-content>
@@ -51,17 +53,19 @@ ion-toolbar {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 ion-thumbnail {
-  border: 3px solid var(--primary-lighter);
+  /* border: 3px solid var(--primary-lighter); */
   border-radius: 50%;
 }
 ion-img {
   border-radius: 50%;
 }
 .introText {
-  margin: 1rem;
+  margin: 1.5rem;
+  margin-top: -0.5rem;
+  /* background-color: red; */
 }
 .introText h1 {
   font-size: 2rem;
@@ -71,6 +75,16 @@ ion-img {
 }
 .introText h1 span {
   color: var(--primary);
+}
+.topCard {
+  display: flex;
+  overflow: auto;
+}
+.topCard * {
+  min-width: 80%;
+}
+.topCard::-webkit-scrollbar {
+  display: none;
 }
 @media (prefers-color-scheme: dark) {
   ion-content {
