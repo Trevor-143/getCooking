@@ -115,4 +115,12 @@ ion-thumbnail {
     overflow: hidden;
     /* margin-bottom: -0.1rem; */
 }
+@media (prefers-color-scheme: dark) {
+    .oneMeal {
+        background-color: #000000;
+    }
+    .oneMeal ion-text p {
+        color: #d1d1d1;
+    }
+}
 </style>

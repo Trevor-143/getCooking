@@ -1,17 +1,18 @@
 <template>
   <ion-page>
-    <ion-header class="ion-no-border" >
-      <ion-toolbar>
-        <div class="topHeader">
-          <!-- <ion-title>Tab 1</ion-title> -->
-          <ion-thumbnail v-if="userImage">
-            <ion-img :src="userImage" :alt="userName" ></ion-img>
-          </ion-thumbnail>
-          <Icon v-else icon="solar:user-circle-bold-duotone" width="60" />
-        </div>
-      </ion-toolbar>
-    </ion-header>
+    
     <ion-content :fullscreen="true">
+      <ion-header class="ion-no-border" >
+        <ion-toolbar>
+          <div class="topHeader">
+            <!-- <ion-title>Tab 1</ion-title> -->
+            <ion-thumbnail v-if="userImage">
+              <ion-img :src="userImage" :alt="userName" ></ion-img>
+            </ion-thumbnail>
+            <Icon v-else icon="solar:user-circle-bold-duotone" width="60" />
+          </div>
+        </ion-toolbar>
+      </ion-header>
       <div class="introText">
         <ion-text>
           <!-- <p>Hi {{ userName? userName : 'There' }}!</p> -->
